@@ -1,5 +1,6 @@
 # Short_Path_In_STL_File
 To work with program:
+---
     1. Input path for stl file. 
         Program will parse file and output all polygons. Each polygon consists of normal vector and 3 points.
     2. Input source and target point coordinates.
