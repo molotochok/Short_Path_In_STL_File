@@ -82,7 +82,7 @@ void PathFinding::findShortestPath(Point& source, Point& target, STLParser& stlP
 	std::cout << "True short distance(through space):\n" << findDistance(source, target) << std::endl;
 
 	std::cout << "Path:\n";
-	outputPath(parent, targetIndex);
+	outputPath(parent, targetIndex - 1);
 	std::cout << std::endl;
 }
 void PathFinding::outputMatrix(const std::vector<std::vector<float>>& matrix, const std::string& name, char delimiter) {
@@ -101,7 +101,7 @@ void PathFinding::outputPath(const std::vector<int>& parent, int v) {
 		return;
 	}
 	outputPath(parent, parent[v]);
-	std::cout << v << " ";
+	std::cout << v + 1 << " ";
 }
 
 //getter and setter	
