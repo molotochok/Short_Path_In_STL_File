@@ -43,7 +43,7 @@ Point getPoint(std::string text, STLParser stlParser) {
 		default:
 			break;
 		}
-		
+
 	}
 
 	return point;
@@ -58,7 +58,7 @@ int main() {
 		//--------------Parser------------------------------
 		STLParser stlParser(path);
 		stlParser.parse();
-		stlParser.outputTriangles();
+		stlParser.outputPoints();
 		std::cout << "Number of points: " << stlParser.getPoints().size() << std::endl;
 
 		//--------------PathFinding-------------------------
@@ -95,11 +95,11 @@ int main() {
 				}
 			}
 		}
-		
 	}
 	catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
+
 	system("pause");
 	return 0;
 }

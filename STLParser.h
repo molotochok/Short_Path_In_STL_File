@@ -35,19 +35,20 @@ private:
 	std::vector<Triangle> _triangles;
 	std::vector<Point>	  _points;
 	float				  _index;
-
-	//Private methods
-	Point parsePoint(std::ifstream& input, bool hasIndex);
-	float getPointName(float x, float y, float z);
-	float parseFloat(std::ifstream& input);
 public:
 	//Constructors
 	STLParser();
 	STLParser(const std::string& filePath);
 
-	//Public methods
+	//Helpful methods
+	Point parsePoint(std::ifstream& input, bool hasIndex);
+	float getPointName(float x, float y, float z);
+	float parseFloat(std::ifstream& input);
+
+	//Main methods
 	void parse();
 	void outputTriangles();
+	void outputPoints();
 
 	//getter and setter
 	void setFilePath(std::string filePath);

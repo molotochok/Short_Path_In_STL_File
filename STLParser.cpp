@@ -7,20 +7,20 @@
 
 //---------------STLParser---------------------
 //Constructors
-STLParser::STLParser(){
+STLParser::STLParser() {
 	setFilePath("");
 };
-STLParser::STLParser(const std::string& filePath){
+STLParser::STLParser(const std::string& filePath) {
 	setFilePath(filePath);
 	_index = 0;
 	_points.resize(0);
 };
 
-//Private methods
+//Helpful methods
 float STLParser::getPointName(float x, float y, float z) {
 	float index;
-	if (std::find_if(_points.begin(), _points.end(), [&](Point point){
-		if (point._x == x && point._y == y && point._z == z){
+	if (std::find_if(_points.begin(), _points.end(), [&](Point point) {
+		if (point._x == x && point._y == y && point._z == z) {
 			index = point._index;
 			return true;
 		}
@@ -38,7 +38,7 @@ Point STLParser::parsePoint(std::ifstream& input, bool hasIndex) {
 	float y = parseFloat(input);
 	float z = parseFloat(input);
 	float index = 0;
-	if(hasIndex)
+	if (hasIndex)
 		index = getPointName(x, y, z);
 	return Point(index, x, y, z);
 }
@@ -49,7 +49,7 @@ float STLParser::parseFloat(std::ifstream& input) {
 	return *fptr;
 }
 
-//Public methods
+//Main methods
 void STLParser::parse() {
 	std::ifstream input(_filePath, std::ios::binary | std::ios::in);
 	if (!input) {
@@ -79,6 +79,13 @@ void STLParser::parse() {
 void STLParser::outputTriangles() {
 	std::ostream_iterator<Triangle> os(std::cout, "\n");
 	std::copy(_triangles.begin(), _triangles.end(), os);
+}
+
+void STLParser::outputPoints()
+{
+	std::cout << "Points (index (x, y, z):\n";
+	std::ostream_iterator<Point> os(std::cout, "\n");
+	std::copy(_points.begin(), _points.end(), os);
 }
 
 //getter and setter

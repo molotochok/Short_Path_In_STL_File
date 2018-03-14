@@ -6,7 +6,7 @@ PathFinding::PathFinding(STLParser stlParser) {
 	setVertexMatrix(stlParser.getTriangles());
 	inizializeGraph(stlParser.getPoints().size());
 }
-PathFinding::PathFinding(const std::vector<std::vector<float>>& pointMatrix){
+PathFinding::PathFinding(const std::vector<std::vector<float>>& pointMatrix) {
 	setVertexMatrix(pointMatrix);
 }
 
@@ -51,7 +51,7 @@ void PathFinding::findShortestPath(Point& source, Point& target, STLParser& stlP
 	std::vector<float> distances(size);
 	std::vector<bool> shortestPathSet(size);
 	std::vector<int> parent(size);
-	
+
 	for (int i = 0; i < size; i++) {
 		parent[i] = -1;
 		distances[i] = FLOAT_MAX;
@@ -71,7 +71,7 @@ void PathFinding::findShortestPath(Point& source, Point& target, STLParser& stlP
 		}
 	}
 	float result = distances[targetIndex - 1];
-	
+
 	if (result == FLOAT_MAX) {
 		throw std::exception("There is no connection between this points!");
 	}
@@ -120,7 +120,7 @@ std::vector<std::vector<float>> PathFinding::getVertexMatrix() {
 }
 void PathFinding::setGraph(const std::vector<std::vector<float>>& vertexMatrix) {
 	for (int i = 0; i < vertexMatrix.size(); i++) {
-		_graph[vertexMatrix[i][0]-1][vertexMatrix[i][1]-1] = vertexMatrix[i][2];
+		_graph[vertexMatrix[i][0] - 1][vertexMatrix[i][1] - 1] = vertexMatrix[i][2];
 	}
 }
 std::vector<std::vector<float>> PathFinding::getGraph() {
