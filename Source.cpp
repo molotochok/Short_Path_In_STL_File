@@ -1,5 +1,5 @@
-#include "STLParser.h"
-#include "PathFinding.h"
+#include "STLParser.hpp"
+#include "PathFinding.hpp"
 #include <iostream>
 #include <exception>
 
